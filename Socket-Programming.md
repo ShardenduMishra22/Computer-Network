@@ -1,18 +1,8 @@
-Conversation opened. 1 read message.
+# Socket Programming
 
-Skip to content
-Using Indian Institute of Information Technology Dharwad Mail with screen readers
+## TCP SERVER
 
-1 of 5,124
-(no subject)
-External
-Inbox
-
-Anas
-3:02 AM (1 minute ago)
-to me
-
-TCP SERVER
+```c
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -49,7 +39,11 @@ int main() {
     close(sockfd);
     return 0;
 }
-TCP CLIENT
+```
+
+## TCP CLIENT
+
+```c
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -80,7 +74,11 @@ int main() {
     close(sockfd);
     return 0;
 }
-UDP SERVER
+```
+
+## UDP SERVER
+
+```c
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -115,7 +113,11 @@ int main() {
     close(sockfd);
     return 0;
 }
-UDP CLIENT
+```
+
+## UDP CLIENT
+
+```c
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -148,3 +150,4 @@ int main() {
     close(sockfd);
     return 0;
 }
+```
