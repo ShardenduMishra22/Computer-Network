@@ -76,7 +76,7 @@ int main() {
 }
 ```
 
-## UDP SERVER
+## UDP CLIENT
 
 ```c
 #include <stdio.h>
@@ -115,7 +115,7 @@ int main() {
 }
 ```
 
-## UDP CLIENT
+## UDP SERVER
 
 ```c
 #include <stdio.h>

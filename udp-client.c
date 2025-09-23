@@ -2,14 +2,14 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
-#include <arpa/inet.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
+#include <arpa/inet.h>
 
 int main() {
     int sockfd;
     char buffer[1024];
-    struct sockaddr_in server;
+    struct sockaddr_in server, client;
     socklen_t addr_size;
 
     sockfd = socket(AF_INET, SOCK_DGRAM, 0);
@@ -18,12 +18,13 @@ int main() {
     server.sin_port = htons(8080);
     server.sin_addr.s_addr = inet_addr("127.0.0.1");
 
-    strcpy(buffer, "Hello UDP Server!");
-    sendto(sockfd, buffer, strlen(buffer), 0, (struct sockaddr*)&server, sizeof(server));
+    bind(sockfd, (struct sockaddr*)&server, sizeof(server));
 
-    addr_size = sizeof(server);
-    recvfrom(sockfd, buffer, sizeof(buffer), 0, (struct sockaddr*)&server, &addr_size);
-    printf("Server: %s\n", buffer);
+    addr_size = sizeof(client);
+    recvfrom(sockfd, buffer, sizeof(buffer), 0, (struct sockaddr*)&client, &addr_size);
+
+    strcpy(buffer, "Hello from UDP Server!");
+    sendto(sockfd, buffer, strlen(buffer), 0, (struct sockaddr*)&client, addr_size);
 
     close(sockfd);
     return 0;
